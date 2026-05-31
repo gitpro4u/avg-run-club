@@ -33,6 +33,7 @@ export default function AvgRunClub() {
       name: data.fullName,
       email: data.email,
       level: data.level,
+      avatar: "https://via.placeholder.com/150", // Default avatar
     });
 
     setMemberId(newId);

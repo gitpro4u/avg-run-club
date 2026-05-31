@@ -3,7 +3,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
-import { signIn, useSession } from 'next-auth/react';
 
 interface JoinModalProps {
   isOpen: boolean;
@@ -12,7 +11,7 @@ interface JoinModalProps {
 }
 
 export default function JoinModal({ isOpen, onClose, onSubmit }: JoinModalProps) {
-  const { data: session } = useSession();
+  
   const [formData, setFormData] = React.useState({
     fullName: '', age: '', email: '', phone: '', level: 'Beginner', emergencyContact: ''
   });
@@ -23,20 +22,7 @@ export default function JoinModal({ isOpen, onClose, onSubmit }: JoinModalProps)
     setFormData({ fullName: '', age: '', email: '', phone: '', level: 'Beginner', emergencyContact: '' });
   };
 
-  const handleGoogleLogin = async () => {
-    await signIn('google');
-  };
-
-  // If user is signed in with Google, prefill the form
-  React.useEffect(() => {
-    if (session?.user) {
-      onSubmit({
-        fullName: session.user.name || "Google User",
-        email: session.user.email || "",
-        level: "Beginner",
-      });
-    }
-  }, [session]);
+  
 
   return (
     <AnimatePresence>
@@ -57,11 +43,10 @@ export default function JoinModal({ isOpen, onClose, onSubmit }: JoinModalProps)
               <div className="text-3xl font-bold tracking-tight">Join AVG Run Club</div>
             </div>
 
-            <button 
-              onClick={handleGoogleLogin}
-              className="w-full flex items-center justify-center gap-3 py-3.5 border border-white/20 rounded-2xl mb-6 hover:bg-white/5 transition-all"
+            <button
+              className="w-full bg-[#FF002E] py-3 rounded-xl"
             >
-              Continue with Google
+                Join AVG Run Club
             </button>
 
             <div className="text-center text-xs text-white/50 mb-6">or</div>

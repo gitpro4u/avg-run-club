@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 interface Member {
-  id: number; name: string; level: string; joinDate: string; avatar: string;
+  id: number; name: string; level: string; joinDate: string; avatar?: string;
 }
 
 interface CommunityProps {

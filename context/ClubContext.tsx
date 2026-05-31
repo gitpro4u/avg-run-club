@@ -18,6 +18,7 @@ interface Member {
   email: string;
   level: string;
   joinDate: string;
+  avatar: string;
 }
 
 interface ClubContextType {
@@ -66,14 +67,19 @@ export function ClubProvider({ children }: { children: ReactNode }) {
     setEvents(prev => prev.filter(e => e.id !== id));
   };
 
-  const addMember = (member: Omit<Member, 'id' | 'joinDate'>) => {
-    const newMember: Member = {
+  const addMember = (member: Omit<Member, "id" | "joinDate">) => {
+  setMembers(prev => [
+    {
       ...member,
       id: Date.now(),
-      joinDate: new Date().toISOString().split('T')[0],
-    };
-    setMembers(prev => [newMember, ...prev]);
-  };
+      joinDate: new Date().toISOString().split("T")[0],
+      avatar:
+        member.avatar ||
+        `https://i.pravatar.cc/150?u=${member.email}`,
+    },
+    ...prev,
+  ]);
+};
 
   return (
     <ClubContext.Provider value={{ events, members, addEvent, deleteEvent, addMember }}>
