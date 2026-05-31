@@ -1,0 +1,16 @@
+{
+  "name": "AVG Run Club",
+  "short_name": "AVG Run",
+  "description": "Run Far, Not Fast. A premium running community in Bharuch.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080808",
+  "theme_color": "#FF002E",
+  "icons": [
+    {
+      "src": "/avg-logo.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    }
+  ]
+}
